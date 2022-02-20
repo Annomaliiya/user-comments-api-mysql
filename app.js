@@ -22,6 +22,4 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
 
-console.log("test1");
-
 module.exports = app;

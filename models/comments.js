@@ -2,16 +2,13 @@ const mysql = require("../db");
 
 const addComment = async (name, email, comment) => {
   const newComment = {
-    // id: v4(),
     name,
     email,
     comment,
   };
-  // await db call;
-  const sql = `INSERT INTO comments(name, email, comment) VALUES('${name}', '${email}', '${comment}');`;
-  console.log(mysql.connection);
-  console.log(mysql);
-  mysql.connection.query(sql, function (err, results) {
+  const sql = `INSERT INTO comments(name, email, comment) VALUES(?,?,?);`;
+
+  mysql.connection.query(sql, [name, email, comment], function (err, results) {
     if (err) console.log(err);
     console.log(results);
   });
