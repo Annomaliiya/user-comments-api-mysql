@@ -6,6 +6,8 @@ const ctrl = require("../../controllers");
 
 const router = express();
 
+router.get("/", ctrlWrapper(ctrl.getComments));
+
 router.post("/", validation(userSchema), ctrlWrapper(ctrl.addComment));
 
 module.exports = router;

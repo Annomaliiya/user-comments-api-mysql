@@ -1,5 +1,11 @@
 const mysql = require("../db");
 
+const getComments = async () => {
+  const sql = `SELECT * FROM heroku_265617700358fc9.comments;`;
+  const [result] = await mysql.connection.promise().query(sql);
+  return result;
+};
+
 const addComment = async (name, email, comment) => {
   const newComment = {
     name,
@@ -16,6 +22,7 @@ const addComment = async (name, email, comment) => {
 };
 
 const comments = {
+  getComments,
   addComment,
 };
 
